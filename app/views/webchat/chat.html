@@ -1,0 +1,52 @@
+{{<webchat_template}}
+
+{{$content}}
+
+<main id="content" role="main">
+
+  <form action="/webchat/triage" method="POST" class="form">
+
+    <h2>Message history</h2>
+    <div class="message-history">
+      <div class="message user">
+        <div class="message__avatar"></div>
+        <div class="message__body">
+          <p>{{session.userQuery}}</p>
+        </div>
+      </div>
+      <div class="message agent">
+        <div class="message__avatar"></div>
+        <div class="message__body">
+          <p>Hi {{session.name}}, how long have you had this issue?</p>
+        </div>
+      </div>
+      
+    </div>
+
+    <!-- Problem description -->
+    <div class="form-group">
+      <label class="form-label-bold" for="full-name">Your message</label>
+      <!-- <p class="form-hint">As shown on your birth certificate or passport</p> -->
+      <textarea name="userQuery" id="userQuery" class="form-control textarea" aria-required="true" maxlength="250" spellcheck="true" autocapitalize="sentences"></textarea>
+    </div>
+
+    <div class="form-group">
+      <input type="submit" class="button" value="Send message">
+    </div>
+
+    <a href="done">End chat now</a>
+
+  </form>
+
+  <script>
+    $(document).keypress(function(e) {
+      if(e.which == 96) {
+          window.location.href = "done";
+      }
+    });
+  </script>
+</main>
+
+{{/content}}
+
+{{/webchat_template}}

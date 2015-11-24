@@ -1,0 +1,40 @@
+{{<webchat_template}}
+
+
+{{$content}}
+<main id="content" role="main">
+
+  <!-- <a class="link-back" href="/examples/">Back to the GOV.UK prototype kit examples</a> -->
+
+  <form action="/" method="post" class="form">
+
+    <h1 class="form-title heading-large">
+      Please wait {{session.name}}
+    </h1>
+    <img class="preloader" src="/public/images/preloader_on_grey.gif" />
+
+    <!-- <div class="form-group">
+      <input type="submit" class="button" value="Continue">
+    </div>
+ -->
+  </form>
+
+  <script>
+    $(document).keypress(function(e) {
+      e.preventDefault();
+      console.log('key was: ' + e.which) 
+      if(e.which == 96) {
+          window.location.href = "chat";
+      }
+    });
+    // setTimeout(function(){ 
+    //   window.location.href = "chat";
+    // }, 1500);
+  </script>
+
+
+</main>
+
+{{/content}}
+
+{{/webchat_template}}

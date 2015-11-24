@@ -1,0 +1,63 @@
+{{<webchat_template}}
+
+
+{{$content}}
+<main id="content" role="main">
+
+  <!-- <a class="link-back" href="/examples/">Back to the GOV.UK prototype kit examples</a> -->
+
+  <form action="/webchat/triage" method="POST" class="form">
+
+    <h1>Chat finished</h1>
+    
+    <p>A <a href="">transcript</a> of your chat is available. If you need more help, you can <a href="queue">start a new chat</a>.</p>
+
+    <div class="form-group survey">
+      <fieldset class="inline">
+
+        <legend><h2>Overall, how did you feel about the service you received today?</h2></legend>
+
+        <label for="survey_dissatisfied" class="block-label" data-target="example_survey_dissatisfied">
+          <input type="radio" name="survey_radios" value="Wales" id="survey_dissatisfied">
+          Dissatisfied
+        </label>
+
+        <label for="survey_neutral" class="block-label">
+          <input type="radio" name="survey_radios" value="neutral" id="survey_neutral">
+          Neutral
+        </label>
+
+        <label for="survey_satisfied" class="block-label">
+          <input type="radio" name="survey_radios" value="satisfied" id="survey_satisfied">
+          Satisfied
+        </label>
+
+        
+
+        
+
+        <div class="panel-indent js-hidden" id="example_nationality_other">
+          <label for="nationality_other_countries" class="form-label">
+            Country name
+          </label>
+          <input class="form-control" type="text" id="nationality_other_countries">
+        </div>
+
+      </fieldset>
+    </div>
+
+    <button class="button">Close window</button>
+  </form>
+
+  <script>
+    $(document).keypress(function(e) {
+      if(e.which == 27) {
+          window.location.href = "done";
+      }
+    });
+  </script>
+</main>
+
+{{/content}}
+
+{{/webchat_template}}
