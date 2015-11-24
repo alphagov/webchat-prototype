@@ -1,0 +1,114 @@
+// ========================================
+// General styles for webchat 
+// ========================================
+
+.webchat {
+	
+	// Grey background to diffrientiate from GOV.UK
+	background: $panel-colour;
+
+	// More space
+	header {
+		margin-bottom: 15px;
+	}
+
+	// Hide the menu bar - we don't need it
+	#global-header-bar {
+		display: none;
+	}
+
+	// Use a blue header rather than black
+	#global-header .header-wrapper {
+		background: $govuk-blue;
+	}
+
+	main {
+		// Blue buttons rather than green
+		.button{
+			@include button ($govuk-blue);
+			box-shadow: 0 2px 0 #001526;
+			// color: $grey-3;
+			font-weight: 700;
+			padding-top: em(20);
+			padding-bottom: em(20);
+		}
+
+		.form-control{
+			border: 2px solid $black;
+		}
+
+	}
+
+	// Hide footer for webchat
+	footer {
+		display: none;
+	}
+}
+
+// ========================================
+// Styling for the queue page 
+// ========================================
+
+.preloader {
+	width: 32px;
+	height: 32px;
+}
+
+// ========================================
+// Styling for the chat section 
+// ========================================
+
+.message-history {
+	background: white;
+	padding: 5px;
+	p {
+		color: black;
+		margin: 0;
+	}
+}
+
+.message {
+	// padding: 5px;
+	
+	margin-bottom: 15px;
+	display:inline-block;
+	border-radius: 3px;
+	&:last-of-type {
+		margin-bottom: 0;
+	}
+}
+
+.message.user {
+	text-align: right;
+	float: right;
+}
+
+.message__avatar {
+	width: 40px;
+	height: 40px;
+	border-radius: 3px;
+	background-color: black;
+	float: left;
+	display:inline-block;
+}
+
+.agent .message__avatar{
+	background: black url(images/gov.uk_logotype_crown.png?0.15.1) no-repeat;
+	background-size: 35px 31px;
+	background-position: 50% 50%;
+}
+
+.message__body {
+	display: inline-block;
+	// background: $panel-colour;
+	float: left;
+	margin: 5px;
+	padding: 5px;
+}
+.user .message__avatar, .user .message__body{
+	float: right;
+}
+.user .message__avatar {
+	background: grey;
+}
+
