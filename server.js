@@ -5,6 +5,7 @@ var path = require('path'),
     app = express(),
     basicAuth = require('basic-auth-connect'),
     bodyParser = require('body-parser'),
+    session = require('express-session'),
     port = (process.env.PORT || 3000),
 
 // Grab environment variables specified in Procfile or as Heroku config vars
@@ -43,12 +44,24 @@ app.use(bodyParser.urlencoded({     // to support URL-encoded bodies
   extended: true
 }));
 
+// Support for express sessions
+app.use(session({
+  secret: 'keyboard cat',
+  resave: false,
+  saveUninitialized: true
+}));
+
 // send assetPath to all views
 app.use(function (req, res, next) {
   res.locals.assetPath="/public/";
   next();
 });
 
+// Make the session available to views
+app.use(function (req, res, next){
+    res.locals.session = req.session;
+    next();
+});
 
 // routes (found in app/routes.js)
 
