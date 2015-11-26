@@ -9,10 +9,18 @@
   <form action="/" method="post" class="form">
 
     <h1 class="form-title heading-large">
-      Please wait {{session.name}}
+      Waiting for an advisor
     </h1>
-    <img class="preloader" src="/public/images/preloader_on_grey.gif" />
-
+    <p>Current wait time: 8 minutes</p>
+    <div class="preloader">
+      <img class="preloader__image" src="/public/images/preloader_on_grey.gif" />
+    </div>
+  
+    <p>You can continue to browse GOV.UK while you wait. We'll notify you when an advisor is free.</p>
+    <div class="form-group">
+      <button class="button">Continue browsing GOV.UK</button>
+    </div>
+    <a href="done">End chat now</a>
     <!-- <div class="form-group">
       <input type="submit" class="button" value="Continue">
     </div>

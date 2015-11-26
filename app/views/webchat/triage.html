@@ -7,23 +7,24 @@
 
   <form action="/webchat/triage" method="POST" class="form">
 
-    <!-- <h1 class="form-title heading-large">
-      What should we call you?
-    </h1> -->
+    <h1 class="form-title heading-large">
+      Help for content
+    </h1>
+    <p>GOV.UK Help is a free service where advisors can help you with content in some sections on GOV.UK.</p>
 
+    <p>The current wait time is 7 minutes.</p>
     <!-- Nameame -->
     <div class="form-group">
-      <label class="form-label-bold" for="full-name">First name</label>
+      <label class="form-label-bold" for="full-name">What should we call you?</label>
       <!-- <p class="form-hint">As shown on your birth certificate or passport</p> -->
       <input type="text" class="form-control" id="name" name="name">
     </div>
 
     <!-- Problem description -->
-    <div class="form-group">
+    <!-- <div class="form-group">
       <label class="form-label-bold" for="full-name">How can we help?</label>
-      <!-- <p class="form-hint">As shown on your birth certificate or passport</p> -->
       <textarea name="userQuery" id="userQuery" class="form-control textarea" aria-required="true" maxlength="250" spellcheck="true" autocapitalize="sentences"></textarea>
-    </div>
+    </div> -->
 
     <div class="form-group">
       <input type="submit" class="button" value="Continue">

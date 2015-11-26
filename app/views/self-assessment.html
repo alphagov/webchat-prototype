@@ -1,0 +1,231 @@
+{{<layout}}
+
+{{$pageTitle}} Start page example {{/pageTitle}}
+
+{{$propositionHeader}}
+<!-- blank for no proposition header -->
+{{/propositionHeader}}
+
+{{$headerClass}}
+<!-- blank for no proposition header -->
+{{/headerClass}}
+
+{{$content}}
+
+<main id="content" role="main">
+
+	<div id="global-breadcrumb">
+		<ol>
+			<li><a href="http://www.gov.uk">Home</a></li>
+			<li><a href="">HM Revenue & Customs</a></li>
+			<li>Contact HMRC</li>
+		</ol>
+	</div>
+
+	<div class="grid-row">
+		<div class="column-two-thirds">
+
+			<h1 class="heading-xlarge">
+				Self Assessment: general enquiries
+			</h1>
+
+			<div class="webchat-cta">
+				<h2>Talk to an HMRC adviser online</h2>
+				<p>You can use web chat instead of calling HMRC's helpline.<br><a href="">Start web chat</a><a href="">I'm not interested</a></p>
+				<p><a class="guidance-open" href="#">Help and guidance</a></p>
+
+			</div>
+			
+			<h2>Online forms</h2>
+			<a href="">Tell HMRC youve changed name or address</a>
+			<p>If HMRC needs to contact you about anything confidential they'll reply by phone or post.</p>
+			
+			<h2>Phone</h2>
+
+			<div class="details">
+				<div class="phone-detail">
+
+					<ul class="phone-list">
+						<li>
+							<span class="type">Telephone: </span>
+							<span class="value">0300 200 3310</span>
+						</li>
+
+						<li>
+							<span class="type">Textphone: </span>
+							<span class="value">0300 200 3319</span>
+						</li>
+
+						<li>
+							<span class="type">Outside UK: </span>
+							<span class="value">+44 161 931 9070</span>
+						</li>
+
+					</ul>
+
+					<div class="description govspeak">
+						<p>Call HMRC for advice on Self Assessment.</p>
+
+						<p>If you have a National Insurance number and Self Assessment Unique Taxpayer Reference (UTR) have them with you when you phone.</p>
+
+					</div>
+
+					<p class="call-charges"><a href="https://www.gov.uk/call-charges">Find out about call charges</a></p>
+
+					<h4>Opening times:</h4>
+					<div class="govspeak">
+						<p>8am to 8pm, Monday to Friday<br>
+							8am to 4pm Saturday</p>
+
+							<p>Closed Sundays, Christmas Day, Boxing Day and New Year’s Day</p>
+
+						</div>
+
+					</div>
+
+					<div class="govspeak">
+						<p>Contact <a href="https://www.gov.uk/government/organisations/hm-revenue-customs/contact/self-assessment-online-services-helpdesk">Self Assessment: online services</a> for problems filing your tax return online or if you’ve lost your online service user name or password.</p>
+
+						<div class="call-to-action">
+							<p>Get help <a href="https://www.gov.uk/dealing-hmrc-additional-needs/overview">dealing with HMRC if you have additional needs</a>.</p>
+						</div>
+
+					</div>
+				</div>
+				<h2 class="details-header">Post</h2>
+				<div class="details">
+					<div class="description govspeak">
+						<p>Write to HMRC at this address with all Self Assessment queries except <a href="https://www.gov.uk/government/organisations/hm-revenue-customs/contact/complain-about-hmrc">complaints.</a></p>
+
+						<p>You do not need to include a street name, city name or PO box when writing to this address.</p>
+
+						<p>Couriers should use a <a href="https://www.gov.uk/government/organisations/hm-revenue-customs/contact/couriers">different address.</a></p>
+
+					</div>
+					<div class="vcard">
+						<div class="fn">Self Assessment</div>
+						<div class="street-address">HM Revenue and Customs</div>
+						<div class="locality"></div>
+						<div class="region"></div>
+						<div class="postal-code">BX9 1AS</div>
+						<div class="country-name">United Kingdom</div>
+					</div>
+
+					<div class="govspeak">
+
+
+					</div>
+				</div>
+			</div>
+			<div class="column-third">
+
+				<div class="related-links">
+					<h2 class="heading-medium">Elsewhere on GOV.UK</h2>
+
+					<ul class="font-xsmall">
+						<li><a href="#">Self Assessment tax returns</a></li>
+						<li><a href="#">Log in and file your Self Assessment tax return</a></li>
+						<li><a href="#" class="">Self Assessment deadlines</a></li>
+					</ul>
+
+					<h2 class="heading-medium">Other contacts</h2>
+
+					<ul class="font-xsmall">
+						<li><a href="#">Self Assessment: online services</a></li>
+						<li><a href="#">Self Assessment: forms ordering</a></li>
+						<li><a href="#">Self Assessment: payments</a></li>
+						<li><a href="#">Treth Incwm, Hunanasesiad a mwy</a></li>
+						<li><a href="#">Change your address and personal details</a></li>
+					</ul>
+				</div>
+
+			</div>
+		</div>
+<iframe src="http://localhost:3000/self-assessment" frameborder="0" width="900px" height="900px"></iframe>
+	</main>
+
+	<div class="guidance column-third" aria-hidden="true" data-position="right" aria-labelledby="help-and-guidance">
+		
+		
+		<div class="guidance-header">
+			
+			<h2 class="guidance-title" id="help-and-guidance">HMRC online help</h2>
+			
+			<button class="guidance-close" type="button" title="Close Help &amp; guidance">
+				<span class="icon icon-close">Close</span>
+			</button>
+			
+			<!-- <button class="guidance-move" type="button" title="Move to the left of the screen">
+				<span class="icon icon-switch">Move to the left of the screen</span>
+			</button> -->
+			
+		</div>
+		
+		
+		<div class="guidance-content">
+			<div class="message message--agent">
+				<p class="message__author">HMRC - Anne</p>
+				<div class="message__body">
+					<p>Hi {{session.name}}, how can I help you?</p>
+				</div>
+			</div>
+			<div class="message message--user">
+				<p class="message__author">Ed</p>
+				<div class="message__body">
+					<p>Hi HMRC, I'm looking at the address on this page - do I need to include a stamp?</p>
+				</div>
+			</div>
+			<div class="message message--agent">
+				<p class="message__author">HMRC - Anne</p>
+				<div class="message__body">
+					<p>Yes, you will need to include a stamp.</p>
+				</div>
+			</div>
+			<div class="message message--user">
+				<p class="message__author">Ed</p>
+				<div class="message__body">
+					<p>Brilliant, thanks!</p>
+				</div>
+			</div>
+			<div class="message message--agent">
+				<p class="message__author">HMRC - Anne</p>
+				<div class="message__body">
+					<p>Is there anything else I can do for you?</p>
+				</div>
+			</div>
+			<div class="message message--agent message--in-progress">
+				<p class="message__author">HMRC - Anne</p>
+				<div class="message__body">
+					<p>Typing...</p>
+				</div>
+			</div>
+
+			<div class="guidance-inner">
+				
+			</div>
+		</div>
+		
+		<div class="guidance-footer">
+			<fieldset>
+				<div class="form-group">
+					<label class="form-label-bold" for="full-name">Your message</label>
+					<textarea name="userQuery" id="userQuery" class="form-control textarea" aria-required="true" maxlength="250" spellcheck="true" autocapitalize="sentences">
+						
+					</textarea>
+				</div>
+				<div class="form-group">
+			        <input type="submit" class="button" value="Send message">
+			    </div>
+			</fieldset>
+			
+
+			<div class="bottom-footer">
+				<p><a class='webchat-swap' href="">Swap back to GOV.UK</a></p>
+			</div>
+		</div>
+
+	</div>
+
+	{{/content}}
+
+	{{/layout}}

@@ -1,0 +1,286 @@
+
+
+// ========================================
+// Webchat CTA
+// ========================================
+
+.webchat-cta {
+	background: $govuk-blue;
+
+	margin-bottom: 15px;
+
+	padding: 10px;
+
+	h2 {
+		margin-bottom: 15px;
+	}
+
+	h2, p, a {
+		color: white;
+	}
+
+	a {
+		font-weight: 700;
+		margin-right: 15px;
+	}
+
+	& :last-child {
+		margin-bottom: 0;
+	}
+}
+
+.guidance[data-position=right] {
+    left: 66.66%;
+    @include media (mobile) {
+		left: 0;
+    }
+}
+
+.guidance[aria-hidden='true'] {
+    display: none;
+}
+
+.guidance-close span, .guidance-move span {
+    cursor: inherit;
+}
+
+.guidance {
+    // background-color: $govuk-blue;
+    border-left: 1px solid #bfc1c3;
+    border-right: 1px solid #bfc1c3;
+    box-sizing: border-box;
+    position: fixed;
+    padding: 0;
+    top: 0;
+    height: 100%;
+    width: 33.33%;
+    // max-width: 25.26316em;
+    padding-top: 53px;
+    overflow: hidden;
+
+    z-index: 999;
+	@include media (mobile) {
+		width: 100%;
+    }
+
+}
+
+
+.guidance-title {
+	@include bold-24;
+    text-transform: none;
+    position: absolute;
+    top: 18px;
+    left: 15px;
+    color: white;
+}
+
+.guidance-content {
+	padding: 15px;
+	background: white;
+    box-sizing: border-box;
+    height: 75%;
+    overflow-y: auto;
+}
+
+.guidance-header {
+    background-color: $govuk-blue;
+    border-bottom: 1px solid #bfc1c3;
+    height: 53px;
+    // max-width: 25.15789em;
+    position: fixed;
+    top: 0;
+    width: 100%;
+}
+
+.guidance-footer {
+	padding: 15px;
+	border-top: 1px solid $grey-1;
+	background-color: white;
+	height: 150px;
+	textarea {
+		width: 100%;
+	}
+	// position: fixed;
+	// bottom: 0;
+	// width: 100%;
+
+}
+
+
+
+.webchat-swap {
+	
+}
+
+.guidance .button {
+	@include button ($govuk-blue);
+	box-shadow: 0 2px 0 #001526;
+	// color: $grey-3;
+	position: absolute;
+	bottom: 0;
+	font-weight: 700;
+	padding-top: em(10);
+	padding-bottom: em(10);
+	// width: 100%;
+}
+
+.text-entry {
+	height: 97px;
+	// position: relative;
+}
+
+.bottom-footer {
+	background-color: $govuk-blue;
+
+	height: 53px;
+	padding: 15px;
+
+	a, a:visited {
+		color: white;
+	}
+}
+
+// ========================================
+// General styles for webchat 
+// ========================================
+
+.webchat {
+	
+	// Grey background to diffrientiate from GOV.UK
+	background: $panel-colour;
+
+	// More space
+	header {
+		margin-bottom: 15px;
+	}
+
+	// Hide the menu bar - we don't need it
+	#global-header-bar {
+		display: none;
+	}
+
+	// Use a blue header rather than black
+	#global-header .header-wrapper {
+		background: $govuk-blue;
+	}
+
+	main {
+		// Blue buttons rather than green
+		.button{
+			@include button ($govuk-blue);
+			box-shadow: 0 2px 0 #001526;
+			// color: $grey-3;
+			font-weight: 700;
+			padding-top: em(10);
+			padding-bottom: em(10);
+		}
+
+		.form-control{
+			border: 2px solid $black;
+		}
+
+	}
+
+	// Hide footer for webchat
+	footer {
+		display: none;
+	}
+}
+
+// ========================================
+// Styling for the queue page 
+// ========================================
+
+.preloader {
+	margin: 15px auto;
+	text-align: center;
+	// height: 150px;
+	padding-left: 20px;
+	padding-right: 20px;
+}
+
+.preloader__image {
+	width: 32px;
+	height: 32px;
+}
+
+// ========================================
+// Styling for the chat section 
+// ========================================
+
+.guidance-content {
+	background: white;
+	padding: 15px;
+	p {
+		color: black;
+		margin: 0;
+	}
+}
+
+.message {
+	@extend %contain-floats;
+	clear: left;
+	padding: 5px;
+	margin-bottom: 15px;
+	display:inline-block;
+	// border-radius: 3px;
+	&:last-of-type {
+		margin-bottom: 0;
+	}
+	width: 100%;
+	// max-width: 85%;
+}
+
+.message--agent {
+	border-left: 5px solid $grey-1;
+	padding-left: 5px;
+}
+
+.message--user {
+	border-right: 5px solid $govuk-blue;
+	padding-right: 5px;
+	float: right;
+}
+
+.message__author {
+	font-weight: 700;
+
+}
+
+.message__body {
+	max-width: 85%;
+}
+
+.message--user .message__body {
+	float: right;
+}
+
+// User's name is right aligned
+.message--user .message__author {
+	text-align: right;
+}
+
+.user .message__avatar {
+	background: grey;
+}
+
+.message--in-progress {
+	opacity: 0.5;
+}
+
+.message__avatar {
+	width: 40px;
+	height: 40px;
+	border-radius: 3px;
+	background-color: black;
+	float: left;
+	display:inline-block;
+}
+
+.agent .message__avatar{
+	background: black url(images/gov.uk_logotype_crown.png?0.15.1) no-repeat;
+	background-size: 35px 31px;
+	background-position: 50% 50%;
+}
+

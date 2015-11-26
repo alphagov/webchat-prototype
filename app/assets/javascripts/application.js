@@ -108,7 +108,7 @@ function ShowHideContent() {
       }
 
     });
-  }
+  };
 }
 
 $(document).ready(function() {
@@ -124,4 +124,99 @@ $(document).ready(function() {
   toggleContent.showHideRadioToggledContent();
   toggleContent.showHideCheckboxToggledContent();
 
+  guidance();
+
 });
+
+
+// Guidance code stolen from Rural payments prototype
+function guidance() {
+    
+  
+  if ($('.guidance').length > 0) {    
+
+    var $doc            = $(document);
+    var $window         = $(window);
+    var guidanceActive  = false;
+    
+    var $guidance        = $('.guidance');
+    var $guidanceOpen    = $('.guidance-open');
+    var $guidanceClose   = $('.guidance-close');
+    
+    var $guidanceMove    = $('.guidance-move');
+    
+    
+    // Open guidance
+    
+    $guidanceOpen.on('click', function(e) {
+      
+      e.preventDefault();
+      
+      if (guidanceActive === false) {
+        
+        $guidance.attr('aria-hidden', false);
+      
+        guidanceActive = true; 
+        
+      } else {
+        
+        $guidance.attr('aria-hidden', true);
+      
+        guidanceActive = false;  
+        
+      }
+    
+    });
+    
+    
+    // Close guidance
+    
+    $guidanceClose.on('click', function(e) {
+      console.log('close clicked');
+      e.preventDefault();
+      
+      $guidance.attr('aria-hidden', true);
+      
+      guidanceActive = false;        
+      
+    });
+    
+    
+    // Move guidance
+    
+    $guidanceMove.on('click', function(e) {
+      
+      
+      e.preventDefault();
+      
+      
+      var pos  = $guidance.attr('data-position') === 'right' ? 'left' : 'right';
+      var text = $guidance.attr('data-position') === 'right' ? 'Move to the right of the screen' : 'Move to the left of the screen'; 
+
+      $guidance.attr('data-position', pos);
+      $guidanceMove.find('span').text(text);
+      $guidanceMove.attr('title', text);
+      
+      
+    });
+    
+    
+    // Close on esc
+    
+    $doc.on('keyup', function(e) {
+        
+      if (e.keyCode === 27 && guidanceActive === true) {
+        
+        $guidance.attr('aria-hidden', true);
+      
+        guidanceActive = false; 
+        
+      }
+      
+    });
+    
+  
+  }
+  
+  
+}
