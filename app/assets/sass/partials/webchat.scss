@@ -67,6 +67,7 @@ $iframe-width: 100 - $webchat-width;
 	// 100% width on mobile
 	@include media (mobile) {
 		width: 100%;
+		border: 0;
 	}
 
 	.button {
@@ -115,12 +116,42 @@ $iframe-width: 100 - $webchat-width;
 
 .webchat__title {
 	@include bold-24;
-	text-transform: none;
-	position: absolute;
-	top: 18px;
-	left: 15px;
+	font-size: 30px;
+	
+	margin-left: 15px;
+	// float: left;
+	position: relative;
+	top: 12px;
+	height: 30px;
+	overflow: visible;
+	vertical-align: baseline;
 	color: white;
+	font-weight: bold;
+	font-size: 30px;
+	line-height: 1em;
+	text-decoration: none;
+	text-rendering: optimizeLegibility;
+	margin-bottom: -3px;
+	padding-top: 2px;
+	// border-bottom: 1px solid transparent;
+	
+
+	@include media (mobile) {
+		background: url(/public/images/govuk_logotype_crown_blue_2x.png) no-repeat;
+		background-size: 35px 31px;
+		background-position: 0 0;
+		padding-left: 40px;
+	}
 }
+
+// .webchat__title {
+//	@include bold-24;
+//	text-transform: none;
+//	position: absolute;
+//	top: 18px;
+//	left: 15px;
+//	color: white;
+// }
 
 .webchat__content {
 	box-sizing: border-box;
