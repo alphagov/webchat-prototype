@@ -42,6 +42,10 @@ $iframe-width: 100 - $webchat-width;
 // ========================================
 
 .webchat__container {
+	// Enaable scrolling on iOS
+	-webkit-overflow-scrolling: touch;
+	overflow-y: scroll;
+	
 	border-left: 1px solid $border-colour;
 	border-right: 1px solid $border-colour;
 	box-sizing: border-box;
