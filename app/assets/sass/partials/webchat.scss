@@ -8,6 +8,10 @@ $iframe-width: 100 - $webchat-width;
 // ========================================
 
 .iframe-container {
+	// Enaable scrolling on iOS
+	-webkit-overflow-scrolling: touch;
+	overflow-y: scroll;
+	
 	width: $iframe-width;
 	position: fixed;
 
