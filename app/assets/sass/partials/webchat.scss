@@ -1,4 +1,262 @@
+// Variables
 
+$webchat-width: 33.33%;
+$iframe-width: 100 - $webchat-width;
+
+// ========================================
+// Iframe
+// ========================================
+
+.iframe-container {
+	width: $iframe-width;
+	position: fixed;
+
+	// Enaable scrolling on iOS
+	right: 0;
+	bottom: -8px; //unsure why this is needed
+	left: 0;
+	top: 0;
+	-webkit-overflow-scrolling: touch;
+	overflow-y: auto;
+
+	iframe {
+		height: 100%;
+		width: 100%;
+	}
+
+	@include media (mobile) {
+		width: 100%;
+		// Collapse iframe by default - webchat covers it
+		display:none;
+	}
+}
+
+// Place iframe on opposite side
+.iframe-container[data-webchat-position=left] {
+	left: $webchat-width;
+	@include media (mobile) {
+		left: 0;
+	}
+}
+
+// Show iframe on mobile when webchat hidden
+.webchat-hidden .iframe-container {
+	@include media (mobile) {
+		display:block;
+	}
+}
+
+// ========================================
+// Webchat
+// ========================================
+
+.webchat__container {
+	// Enaable scrolling on iOS
+	-webkit-overflow-scrolling: touch;
+	border-left: 1px solid $border-colour;
+	border-right: 1px solid $border-colour;
+	box-sizing: border-box;
+	position: fixed;
+	padding: 0;
+	top: 0;
+	height: 100%;
+	width: $webchat-width;
+	padding-top: 53px; // Same height as GOV.UK header
+	z-index: 999; // Keep on top
+
+	// 100% width on mobile
+	@include media (mobile) {
+		width: 100%;
+		border: 0;
+	}
+
+	.button {
+		@include button ($govuk-blue);
+		box-shadow: 0 2px 0 #001526;
+		bottom: 0;
+		text-align: center;
+		font-weight: 700;
+		padding-top: em(10);
+		padding-bottom: em(10);
+		width: 100%;
+	}
+}
+
+// Place webchat on right side
+.webchat__container[data-position=right] {
+	left: $iframe-width;
+	@include media (mobile) {
+		left: 0;
+	}
+}
+
+.webchat__container[aria-hidden='true'] {
+	display: none;
+}
+
+.webchat-close span, .webchat__move-sides span {
+	cursor: inherit;
+}
+
+// Hide button on mobile
+.webchat__move-sides {
+	@include media (mobile) {
+		display: none;
+	}
+}
+
+.webchat__header {
+	position: fixed;
+	top: 0;
+	width: inherit;
+	background-color: $govuk-blue;
+	border-bottom: 1px solid $border-colour;
+	height: 53px;
+}
+
+.webchat__title {
+	@include bold-24;
+	font-size: 30px;
+	margin-left: 15px;
+	position: relative;
+	top: 12px;
+	height: 30px;
+	overflow: visible;
+	vertical-align: baseline;
+	color: white;
+	font-weight: bold;
+	font-size: 30px;
+	line-height: 1em;
+	text-decoration: none;
+	text-rendering: optimizeLegibility;
+	margin-bottom: -3px;
+	padding-top: 2px;
+
+	@include media (mobile) {
+		background: url(/public/images/govuk_logotype_crown_blue_2x.png) no-repeat;
+		background-size: 35px 31px;
+		background-position: 0 0;
+		padding-left: 40px;
+	}
+}
+
+.webchat__content {
+	box-sizing: border-box;
+	height: 100%;
+	overflow-y: auto;
+	padding: 15px;
+	background: white;
+}
+
+.webchat__footer {
+	width: inherit;
+	position: fixed;
+	bottom: 0;
+	border-top: 1px solid $grey-1;
+	background-color: white;
+	textarea {
+		box-sizing: border-box; //not sure why this is needed
+		width: 100%;
+	}
+}
+
+.message__text-entry{
+	padding: 15px;
+}
+
+// ========================================
+// Swap bars
+// ========================================
+
+.footer-swap-bar {
+	padding: 15px;
+	border-top: 5px solid $govuk-blue;
+	background: white;
+	p {
+		margin: 0;
+
+	}
+	a:visited {
+		color: $govuk-blue;
+	}
+}
+
+.footer-show-webchat {
+	border-top: 5px solid $govuk-blue;
+	background: white;
+	display:none;
+	position: fixed;
+	bottom: 0;
+	width: 100%;
+}
+
+.footer-hide-webchat {
+	display: none;
+	@include media (mobile){
+		display: block;
+	}
+}
+
+.webchat-hidden .footer-show-webchat {
+	@include media (mobile) {
+		display: block;
+	}
+}
+
+
+// ========================================
+// Styling for the chat section 
+// ========================================
+
+.message {
+	@extend %contain-floats;
+	box-sizing: border-box;
+	width: 100%;
+	padding: 5px;
+	margin-bottom: 15px;
+
+	&:last-of-type {
+		margin-bottom: 0;
+	}
+}
+
+// Style the author's name
+.message__author {
+	font-weight: 700;
+	margin-bottom: 0;
+}
+
+// Styles for body text of messages
+.message__body {
+	max-width: 85%;
+	p:last-of-type {
+		margin-bottom: 0;
+	}
+}
+
+// Styles for message being typed from agent
+.message--in-progress {
+	opacity: 0.5;
+}
+
+// Styles for agents
+.message--agent {
+	border-left: 5px solid $grey-1;
+	padding-left: 5px;
+}
+
+// Styles for users
+.message--user {
+	border-right: 5px solid $govuk-blue;
+	padding-right: 5px;
+	
+	.message__author {
+		text-align: right; // User's name is right aligned
+	}
+	.message__body {
+		float: right; // Float the message right, but keep text left aligned
+	}
+}
 
 // ========================================
 // Webchat CTA
@@ -29,165 +287,6 @@
 	}
 }
 
-.guidance[data-position=right] {
-    left: 66.66%;
-    @include media (mobile) {
-		left: 0;
-    }
-}
-
-.guidance[aria-hidden='true'] {
-    display: none;
-}
-
-.guidance-close span, .guidance-move span {
-    cursor: inherit;
-}
-
-.guidance {
-    // background-color: $govuk-blue;
-    border-left: 1px solid #bfc1c3;
-    border-right: 1px solid #bfc1c3;
-    box-sizing: border-box;
-    position: fixed;
-    padding: 0;
-    top: 0;
-    height: 100%;
-    width: 33.33%;
-    // max-width: 25.26316em;
-    padding-top: 53px;
-    overflow: hidden;
-
-    z-index: 999;
-	@include media (mobile) {
-		width: 100%;
-    }
-
-}
-
-
-.guidance-title {
-	@include bold-24;
-    text-transform: none;
-    position: absolute;
-    top: 18px;
-    left: 15px;
-    color: white;
-}
-
-.guidance-content {
-	padding: 15px;
-	background: white;
-    box-sizing: border-box;
-    height: 75%;
-    overflow-y: auto;
-}
-
-.guidance-header {
-    background-color: $govuk-blue;
-    border-bottom: 1px solid #bfc1c3;
-    height: 53px;
-    // max-width: 25.15789em;
-    position: fixed;
-    top: 0;
-    width: 100%;
-}
-
-.guidance-footer {
-	padding: 15px;
-	border-top: 1px solid $grey-1;
-	background-color: white;
-	height: 150px;
-	textarea {
-		width: 100%;
-	}
-	// position: fixed;
-	// bottom: 0;
-	// width: 100%;
-
-}
-
-
-
-.webchat-swap {
-	
-}
-
-.guidance .button {
-	@include button ($govuk-blue);
-	box-shadow: 0 2px 0 #001526;
-	// color: $grey-3;
-	position: absolute;
-	bottom: 0;
-	font-weight: 700;
-	padding-top: em(10);
-	padding-bottom: em(10);
-	// width: 100%;
-}
-
-.text-entry {
-	height: 97px;
-	// position: relative;
-}
-
-.bottom-footer {
-	background-color: $govuk-blue;
-
-	height: 53px;
-	padding: 15px;
-
-	a, a:visited {
-		color: white;
-	}
-}
-
-// ========================================
-// General styles for webchat 
-// ========================================
-
-.webchat {
-	
-	// Grey background to diffrientiate from GOV.UK
-	background: $panel-colour;
-
-	// More space
-	header {
-		margin-bottom: 15px;
-	}
-
-	// Hide the menu bar - we don't need it
-	#global-header-bar {
-		display: none;
-	}
-
-	// Use a blue header rather than black
-	#global-header .header-wrapper {
-		background: $govuk-blue;
-	}
-
-	main {
-		// Blue buttons rather than green
-		.button{
-			@include button ($govuk-blue);
-			box-shadow: 0 2px 0 #001526;
-			// color: $grey-3;
-			font-weight: 700;
-			padding-top: em(10);
-			padding-bottom: em(10);
-		}
-
-		.form-control{
-			border: 2px solid $black;
-		}
-
-	}
-
-	// Hide footer for webchat
-	footer {
-		display: none;
-	}
-}
-
 // ========================================
 // Styling for the queue page 
 // ========================================
@@ -205,82 +304,24 @@
 	height: 32px;
 }
 
-// ========================================
-// Styling for the chat section 
-// ========================================
 
-.guidance-content {
-	background: white;
-	padding: 15px;
-	p {
-		color: black;
-		margin: 0;
+// --------------------
+
+#webchat-lightbox {
+	display:none;
+	&.featherlight-inner{
+		display:block;
 	}
-}
-
-.message {
-	@extend %contain-floats;
-	clear: left;
-	padding: 5px;
-	margin-bottom: 15px;
-	display:inline-block;
-	// border-radius: 3px;
-	&:last-of-type {
+	strong {
+		font-weight: 700;
+	}
+	.button {
+		@include button ($govuk-blue);
 		margin-bottom: 0;
 	}
-	width: 100%;
-	// max-width: 85%;
 }
 
-.message--agent {
-	border-left: 5px solid $grey-1;
-	padding-left: 5px;
+.featherlight .featherlight-content {
+	padding: 30px;
+	border: 0;
 }
-
-.message--user {
-	border-right: 5px solid $govuk-blue;
-	padding-right: 5px;
-	float: right;
-}
-
-.message__author {
-	font-weight: 700;
-
-}
-
-.message__body {
-	max-width: 85%;
-}
-
-.message--user .message__body {
-	float: right;
-}
-
-// User's name is right aligned
-.message--user .message__author {
-	text-align: right;
-}
-
-.user .message__avatar {
-	background: grey;
-}
-
-.message--in-progress {
-	opacity: 0.5;
-}
-
-.message__avatar {
-	width: 40px;
-	height: 40px;
-	border-radius: 3px;
-	background-color: black;
-	float: left;
-	display:inline-block;
-}
-
-.agent .message__avatar{
-	background: black url(images/gov.uk_logotype_crown.png?0.15.1) no-repeat;
-	background-size: 35px 31px;
-	background-position: 50% 50%;
-}
-

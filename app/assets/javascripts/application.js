@@ -70,15 +70,15 @@ function ShowHideContent() {
       }
 
     });
-  }
-  self.showHideCheckboxToggledContent = function () {
+}
+self.showHideCheckboxToggledContent = function () {
 
-    $(".block-label input[type='checkbox']").each(function() {
+  $(".block-label input[type='checkbox']").each(function() {
 
-      var $checkbox = $(this);
-      var $checkboxLabel = $(this).parent();
+    var $checkbox = $(this);
+    var $checkboxLabel = $(this).parent();
 
-      var $dataTarget = $checkboxLabel.attr('data-target');
+    var $dataTarget = $checkboxLabel.attr('data-target');
 
       // Add ARIA attributes
 
@@ -108,7 +108,7 @@ function ShowHideContent() {
       }
 
     });
-  };
+};
 }
 
 $(document).ready(function() {
@@ -131,41 +131,41 @@ $(document).ready(function() {
 
 // Guidance code stolen from Rural payments prototype
 function guidance() {
-    
-  
-  if ($('.guidance').length > 0) {    
+
+
+  if ($('.webchat__container').length > 0) {    
 
     var $doc            = $(document);
     var $window         = $(window);
     var guidanceActive  = false;
     
-    var $guidance        = $('.guidance');
-    var $guidanceOpen    = $('.guidance-open');
-    var $guidanceClose   = $('.guidance-close');
+    var $guidance        = $('.webchat__container');
+    var $guidanceOpen    = $('.webchat-open');
+    var $guidanceClose   = $('.webchat-close');
     
-    var $guidanceMove    = $('.guidance-move');
+    var $guidanceMove    = $('.webchat__move-sides');
     
     
     // Open guidance
     
     $guidanceOpen.on('click', function(e) {
-      
+
       e.preventDefault();
       
       if (guidanceActive === false) {
-        
+
         $guidance.attr('aria-hidden', false);
-      
+        $('body').removeClass('webchat-hidden');
         guidanceActive = true; 
         
       } else {
-        
+
         $guidance.attr('aria-hidden', true);
-      
+
         guidanceActive = false;  
         
       }
-    
+
     });
     
     
@@ -176,6 +176,9 @@ function guidance() {
       e.preventDefault();
       
       $guidance.attr('aria-hidden', true);
+      $('body').addClass('webchat-hidden');
+
+      setIframeHeight();
       
       guidanceActive = false;        
       
@@ -185,8 +188,8 @@ function guidance() {
     // Move guidance
     
     $guidanceMove.on('click', function(e) {
-      
-      
+
+
       e.preventDefault();
       
       
@@ -194,6 +197,7 @@ function guidance() {
       var text = $guidance.attr('data-position') === 'right' ? 'Move to the right of the screen' : 'Move to the left of the screen'; 
 
       $guidance.attr('data-position', pos);
+      $('.iframe-container').attr('data-webchat-position', pos);
       $guidanceMove.find('span').text(text);
       $guidanceMove.attr('title', text);
       
@@ -204,18 +208,46 @@ function guidance() {
     // Close on esc
     
     $doc.on('keyup', function(e) {
-        
+
       if (e.keyCode === 27 && guidanceActive === true) {
-        
+
         $guidance.attr('aria-hidden', true);
-      
-        guidanceActive = false; 
+
+        guidanceActive = false;
         
       }
       
     });
+
+    $(function(){
+      setIframeHeight();
+      setMessageBoxHeight();
+    });
+
+    //And if the outer div has no set specific height set.. 
+    $(window).resize(function(){
+      setIframeHeight();
+      
+      setMessageBoxHeight();
+
+    });
+
+    function setIframeHeight() {
+      var height = window.innerHeight,
+          footer = ($('.footer-show-webchat').is(":visible")) ? $('.footer-show-webchat').outerHeight() : 0;
+          $('iframe').css('height', height-footer);
+    };
+
+    function setMessageBoxHeight() {
+      var windowHeight = window.innerHeight,
+        header = $('.webchat__header').outerHeight(),
+        footer = $('.webchat__footer').outerHeight(),
+        chatHeight = windowHeight - header - footer;
+      // console.log('chatheight is' + chatHeight);
+      $('.webchat__content').css('height', chatHeight);
+    };
     
-  
+
   }
   
   

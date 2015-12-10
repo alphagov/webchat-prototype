@@ -1,0 +1,113 @@
+{{<sparce_template}}
+
+{{$globalHeaderText}}GOV.UK Help{{/globalHeaderText}}
+
+{{$bodyClasses}}webchat{{/bodyClasses}}
+
+{{$head}}
+{{>includes/head}}
+
+{{/head}}
+
+{{$propositionHeader}}
+
+{{/propositionHeader}}
+
+{{$headerClass}}with-proposition{{/headerClass}}
+
+{{$bodyEnd}}
+	{{>includes/scripts}}
+{{/bodyEnd}}
+
+{{$content}}
+
+<div data-webchat-position="right" class="iframe-container">
+	<iframe id="iframe" src="{{requestedUrl}}" frameborder="0" height="800px"></iframe>
+</div>
+
+<div class="webchat__container" aria-hidden="false" data-position="right">
+
+	<div class="webchat__header">
+		
+		<h2 class="webchat__title">HMRC online help</h2>
+		
+		<!-- <button class="webchat__close-button webchat-close" type="button" title="Close Help &amp; guidance">
+			<span class="icon icon-close">Close</span>
+		</button> -->
+		
+		<button class="webchat__move-sides" type="button" title="Move to the left of the screen">
+			<span class="icon icon-switch">Move to the left of the screen</span>
+		</button>
+		
+	</div>
+	
+	<div class="webchat__content">
+		<div class="message message--agent">
+			<p class="message__author">HMRC - Anne</p>
+			<div class="message__body">
+				<p>Hi {{session.name}}, how can I help you?</p>
+			</div>
+		</div>
+		<div class="message message--user">
+			<p class="message__author">Ed</p>
+			<div class="message__body">
+				<p>Hi HMRC, I'm looking at the address on this page - do I need to include a stamp?</p>
+			</div>
+		</div>
+		<div class="message message--agent">
+			<p class="message__author">HMRC - Anne</p>
+			<div class="message__body">
+				<p>Yes, you will need to include a stamp.</p>
+			</div>
+		</div>
+		<div class="message message--user">
+			<p class="message__author">Ed</p>
+			<div class="message__body">
+				<p>Brilliant, thanks!</p>
+			</div>
+		</div>
+		<div class="message message--agent">
+			<p class="message__author">HMRC - Anne</p>
+			<div class="message__body">
+				<p>Is there anything else I can do for you?</p>
+			</div>
+		</div>
+		<div class="message message--agent message--in-progress">
+			<p class="message__author">HMRC - Anne</p>
+			<div class="message__body">
+				<p>Typing...</p>
+			</div>
+		</div>
+
+		<div class="webchat-inner">
+			
+		</div>
+	</div>
+	
+	<div class="webchat__footer">
+
+		<div class="message__text-entry">
+			<div class="form-group">
+				<label class="form-label-bold" for="full-name">Your message</label>
+				<textarea name="userQuery" id="userQuery" class="textarea" aria-required="true" maxlength="250" spellcheck="true" autocapitalize="sentences">
+						
+				</textarea>
+			</div>
+			<a href="" class="button">Send message</a>
+		</div>
+
+		<div class="footer-hide-webchat footer-swap-bar">
+			<p><a class='webchat-close' href="#">Swap back to GOV.UK</a></p>
+		</div>
+	</div>
+
+</div>
+
+<div class="footer-show-webchat footer-swap-bar">
+	<p><a class='webchat-open' href="">Return to HMRC online help</a></p>
+</div>
+
+{{/content}}
+
+{{/sparce_template}}
+
