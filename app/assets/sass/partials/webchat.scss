@@ -303,3 +303,25 @@ $iframe-width: 100 - $webchat-width;
 	width: 32px;
 	height: 32px;
 }
+
+
+// --------------------
+
+#webchat-lightbox {
+	display:none;
+	&.featherlight-inner{
+		display:block;
+	}
+	strong {
+		font-weight: 700;
+	}
+	.button {
+		@include button ($govuk-blue);
+		margin-bottom: 0;
+	}
+}
+
+.featherlight .featherlight-content {
+	padding: 30px;
+	border: 0;
+}
